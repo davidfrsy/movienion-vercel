@@ -1,0 +1,100 @@
+.widget-card {
+  border: none;
+  box-shadow: none;
+  background-color: #f8f9fa; 
+  border-radius: 8px; 
+  margin-bottom: 1.5rem;
+  overflow: hidden; 
+}
+
+.widget-card .card-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+  background-color: transparent;
+  border-bottom: 1px solid #e9ecef;
+  padding: 1rem 1.25rem;
+}
+
+.widget-item-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.85rem 1.25rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.widget-item-link:hover {
+  background-color: #e9ecef;
+}
+
+.widget-poster {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  border: 1px solid #dee2e6;
+}
+
+.widget-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.widget-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #212529;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.widget-rating {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.widget-rating svg {
+  margin-right: 4px;
+}
+
+.widget-about-text {
+  font-size: 0.9rem;
+  color: #495057;
+  line-height: 1.6;
+  padding: 1.25rem;
+}
+
+.genre-badge:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.contributor-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+}
+
+.contributor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+
+.contributor-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #212529;
+}

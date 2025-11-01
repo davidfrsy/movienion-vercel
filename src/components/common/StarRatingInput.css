@@ -1,0 +1,16 @@
+.star-rating-input {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Sembunyikan tombol radio aslinya */
+.star-rating-input input[type='radio'] {
+  display: none;
+}
+
+/* Beri style pada bintangnya */
+.star-rating-input .star {
+  cursor: pointer;
+  transition: color 0.2s;
+  margin-right: 5px;
+}

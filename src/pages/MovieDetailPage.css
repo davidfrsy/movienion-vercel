@@ -1,0 +1,65 @@
+.movie-detail-container {
+  max-width: 960px;
+}
+
+.eyebrow-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #6c757d;
+  letter-spacing: 1px;
+}
+
+.movie-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.meta-info,
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.meta-separator {
+  color: #dee2e6;
+}
+
+.author-info {
+  font-size: 0.9rem;
+}
+
+.author-name {
+  font-weight: 600;
+  color: #212529; 
+}
+
+.blog-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #343a40;
+}
+
+.movie-detail-poster {
+  max-width: 300px; 
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.back-link {
+  font-size: 0.9rem;
+  color: #6c757d; 
+  text-decoration: none;
+  transition: text-decoration 0.2s ease-in-out;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  color: #212529;
+}

@@ -1,0 +1,57 @@
+.latest-reviews-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6; 
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.carousel-padding-item {
+  padding: 0 10px 15px 10px; 
+}
+
+.react-multi-carousel-arrow {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+
+.react-multi-carousel-arrow::before {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .react-multi-carousel-arrow {
+    display: none !important;
+  }
+  .latest-reviews-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.react-multi-carousel-dot-list {
+  bottom: -15px !important;
+}
+
+.react-multi-carousel-dot button {
+  background: #e0e0e0;
+  border: none;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  transition: background 0.3s ease;
+}
+
+.react-multi-carousel-dot--active button {
+  background: #007bff !important;
+}

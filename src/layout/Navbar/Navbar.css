@@ -1,0 +1,42 @@
+.navbar-brand {
+  font-family: "Montserrat", sans-serif !important; 
+  font-weight: 800 !important; 
+  text-transform: uppercase !important; 
+  letter-spacing: 0.5px; 
+  font-size: 1.4rem !important;
+}
+
+.search-box-container {
+  position: relative; 
+}
+
+.search-icon {
+  position: absolute; 
+  top: 50%; 
+  right: 18px; 
+  transform: translateY(-50%);
+  color: #6c757d; 
+  pointer-events: none; 
+}
+
+.search-input-with-icon {
+  padding-right: 30px !important;
+}
+
+@media (max-width: 991.98px) {
+
+  .navbar-search-form {
+    width: 100%;
+    margin-right: 0 !important;
+    margin-top: 8px;    
+    margin-bottom: 8px; 
+  }
+
+  .search-box-container {
+    width: 100%;
+  }
+
+  .search-icon {
+    right: 10px; 
+  }
+}

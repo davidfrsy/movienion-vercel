@@ -1,0 +1,81 @@
+.movie-card-grid {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.movie-card-grid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-img-container {
+  position: relative;
+  width: 100%;
+  padding-top: 150%; 
+  overflow: hidden;
+}
+
+.movie-card-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.card-rating-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.card-movie-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-meta-info {
+  font-size: 0.8rem;
+  color: #6c757d; 
+  padding-top: 0.5rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.meta-dot {
+  margin: 0 0.25rem;
+}
+
+.genre-badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px; 
+}
+
+.genre-badge-item {
+  font-size: small;
+  text-transform: uppercase;
+}

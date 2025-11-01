@@ -1,0 +1,13 @@
+.category-header h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #adb5bd; 
+  text-transform: uppercase;
+}
+
+.featured-header {
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 0.5rem;
+}
