@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Container, Row, Col, Image, Spinner, Alert } from "react-bootstrap";
-import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { Container, Row, Col, Image, Spinner, Alert, Button } from "react-bootstrap";
+import { FaStar, FaRegStar, FaStarHalfAlt, FaThumbsUp, FaThumbsDown, FaLink } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
 import { Helmet } from "react-helmet-async";
+import { toast } from 'react-toastify';
+import { format } from 'date-fns';
 import DOMPurify from "dompurify";
 
 import "./MovieDetailPage.css";
@@ -78,6 +80,12 @@ const MovieDetailPage = () => {
 
   const handleNewComment = (newComment) => {
     setComments([newComment, ...comments]);
+  };
+
+  const handleShare = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard.writeText(currentUrl);
+    toast.success("Link copied to clipboard!");
   };
 
   if (isLoading) {
@@ -166,6 +174,31 @@ const MovieDetailPage = () => {
         <Row className="justify-content-center mt-5">
           <Col md={8}>
             <hr />
+
+            <div className="d-flex justify-content-end gap-2 my-3">
+              <Button 
+                variant="outline-secondary" 
+                size="sm" 
+                onClick={() => console.log('Like clicked!')}
+              >
+                <FaThumbsUp /> Like
+              </Button>
+              <Button 
+                variant="outline-secondary" 
+                size="sm" 
+                onClick={() => console.log('Dislike clicked!')}
+              >
+                <FaThumbsDown /> Dislike
+              </Button>
+              <Button 
+                variant="outline-secondary" 
+                size="sm" 
+                onClick={handleShare}
+              >
+                <FaLink /> Share
+              </Button>
+            </div>
+
             <h3 className="mb-4">Comments ({comments.length})</h3>
 
             <CommentForm
