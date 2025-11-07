@@ -110,15 +110,24 @@ router.get('/related/:slug', async (req, res) => {
 router.get("/:identifier", async (req, res) => {
   try {
     const { identifier } = req.params;
+    
 
-    const isNumericId = !isNaN(parseInt(identifier));
+    const isNumericId = /^\d+$/.test(identifier);
 
     let query = supabase.from("reviews").select("*, users ( name )");
 
     if (isNumericId) {
-      query = query.eq("id", identifier);
+      query = supabase
+        .from('reviews')
+        .select(`*, users ( name )`)
+        .eq('id', identifier)
+        .single();
     } else {
-      query = query.eq("slug", identifier);
+      query = supabase
+        .from('reviews')
+        .select(`*, users ( name )`)
+        .eq('slug', identifier)
+        .single();
     }
 
     const { data, error } = await query.single();
@@ -130,7 +139,7 @@ router.get("/:identifier", async (req, res) => {
       res.status(404).json({ message: "Review not found" });
     }
   } catch (error) {
-    console.error("Reviews API Error:", err.message); 
+    console.error("Reviews API Error:", error.message); 
     res.status(500).json({ error: 'Terjadi kesalahan pada server.' });
   }
 });

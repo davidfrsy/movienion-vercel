@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Image, Spinner, Alert } from "react-bootstrap";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
+import { Helmet } from "react-helmet-async";
 import DOMPurify from "dompurify";
 
 import "./MovieDetailPage.css";
@@ -39,9 +40,7 @@ const MovieDetailPage = () => {
   useEffect(() => {
     const fetchMovieDetail = async () => {
       try {
-        const response = await fetch(
-          `/api/reviews/${slug}`
-        );
+        const response = await fetch(`/api/reviews/${slug}`);
         if (!response.ok) {
           throw new Error("Movie not found");
         }
@@ -63,9 +62,7 @@ const MovieDetailPage = () => {
       setLoadingComments(true);
       setErrorComments(null);
       try {
-        const response = await fetch(
-          `/api/comments/review/${movie.id}`
-        );
+        const response = await fetch(`/api/comments/review/${movie.id}`);
         if (!response.ok) throw new Error("Failed to load comments.");
         const data = await response.json();
         setComments(data);
@@ -105,8 +102,23 @@ const MovieDetailPage = () => {
     addSuffix: true,
   });
 
+  const metaDescription =
+    movie.review_text.replace(/<[^>]+>/g, "").substring(0, 155) + "...";
+
   return (
     <>
+      <Helmet>
+        <title>{`${movie.title} (${movie.release_year}) - Movienion Review`}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={`${movie.title} Review`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:image" content={movie.poster_url} />
+        <meta
+          property="og:url"
+          content={`https://movienion.vercel.app/movie/${movie.slug}`}
+        />
+      </Helmet>
+
       <Container className="movie-detail-container my-5">
         <Row className="justify-content-center">
           <Col md={8}>
@@ -173,9 +185,7 @@ const MovieDetailPage = () => {
           </Col>
         </Row>
       </Container>
-      {movie && (
-        <RelatedPosts currentSlug={movie.slug} />
-      )}
+      {movie && <RelatedPosts currentSlug={movie.slug} />}
     </>
   );
 };
