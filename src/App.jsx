@@ -16,6 +16,7 @@ import SearchPage from "./pages/SearchPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
+import DashboardLayout from "./layout/Dashboard/DashboardLayout.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import UserManagementPage from "./pages/UserManagementPage.jsx";
 
@@ -28,56 +29,40 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <HelmetProvider>
-      <Router>
-        <AuthProvider>
+    <Router>
+      <AuthProvider>
+        <HelmetProvider>
           <ScrollToTop />
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
+          <ToastContainer position="top-right" autoClose={3000} theme="light" />
 
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<LandingPage />} />
               <Route path="/movie/:slug" element={<MovieDetailPage />} />
+              <Route path="/category/:type" element={<CategoryPage />} />
               <Route path="/search" element={<SearchPage />} />
-              <Route path="/movies" element={<CategoryPage type="movie" />} />
-              <Route path="/tv-shows" element={<CategoryPage type="tv" />} />
 
               <Route element={<GuestRoute />}>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
               </Route>
+            </Route>
 
-              <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/add-review" element={<AddReviewPage />} />
-                <Route
-                  path="/dashboard/edit/:reviewId"
-                  element={<EditReviewPage />}
-                />
-                <Route
-                  path="/dashboard/users"
-                  element={<UserManagementPage />}
-                />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<DashboardPage />} />
+                <Route path="users" element={<UserManagementPage />} />
+                <Route path="add" element={<AddReviewPage />} />
+                <Route path="edit/:reviewId" element={<EditReviewPage />} />
               </Route>
             </Route>
 
-            {/* Rute 404 */}
+            {/* Halaman 404 */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </AuthProvider>
-      </Router>
-    </HelmetProvider>
+        </HelmetProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

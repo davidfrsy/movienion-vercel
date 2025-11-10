@@ -1,0 +1,187 @@
+/* === ROOT LAYOUT === */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.dashboard-sidebar-wrapper {
+  position: relative;
+  z-index: 100;
+  transition: width 0.3s ease-in-out;
+  /* Dark theme sidebar */
+  background-color: #111827; /* Dark BG */
+  color: #9CA3AF; /* Teks abu-abu */
+}
+
+.dashboard-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #F9FAFB; /* BG konten sangat muda */
+  min-width: 0; /* Mencegah overflow */
+}
+
+.dashboard-main-content {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* === STATE COLLAPSED (Desktop) === */
+.dashboard-layout.sidebar-open .dashboard-sidebar-wrapper {
+  width: 260px; /* Lebar saat terbuka */
+}
+.dashboard-layout.sidebar-closed .dashboard-sidebar-wrapper {
+  width: 80px; /* Lebar saat tertutup */
+}
+
+/* === SIDEBAR CONTENT === */
+.dashboard-sidebar {
+  padding: 1rem 0.75rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-x: hidden; /* Sembunyikan teks saat collapse */
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.75rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.logo-icon {
+  font-size: 1.75rem;
+  min-width: 48px; /* Jaga agar ikon tetap di tengah saat collapsed */
+  text-align: center;
+}
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.sidebar-menu-group {
+  margin-bottom: 1rem;
+}
+.sidebar-menu-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6B7280;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+/* Link Navigasi */
+.dashboard-sidebar .nav-link {
+  color: #D1D5DB;
+  padding: 0;
+  border-radius: 6px;
+  margin: 4px 0;
+}
+.sidebar-link-content {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar-link-content:hover {
+  background-color: #374151; /* Hover abu-gelap */
+  color: #fff;
+}
+.sidebar-link-content.active {
+  background-color: #0d6efd; /* Biru Bootstrap */
+  color: white;
+  font-weight: 600;
+}
+
+.sidebar-link-content svg {
+  font-size: 1.1rem;
+  min-width: 48px; /* Jaga ikon tetap di tengah */
+  text-align: center;
+}
+.sidebar-link-text {
+  margin-left: 0.5rem;
+  white-space: nowrap; /* Teks tidak akan wrap */
+}
+
+/* === DASHBOARD HEADER === */
+.dashboard-header {
+  background-color: #fff !important; /* Header putih */
+  border-bottom: 1px solid #E5E7EB;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  padding: 0.75rem 1.5rem;
+}
+.sidebar-toggle-btn {
+  font-size: 1.25rem;
+  margin-right: 1rem;
+}
+#user-dropdown::after {
+  display: none; /* Sembunyikan panah default dropdown */
+}
+
+/* === RESPONSIF (Mobile) === */
+@media (max-width: 767.98px) {
+  /* Sembunyikan sidebar desktop */
+  .dashboard-layout.sidebar-open .dashboard-sidebar-wrapper,
+  .dashboard-layout.sidebar-closed .dashboard-sidebar-wrapper {
+    width: 0; /* Sembunyikan sidebar di mobile */
+    display: none;
+  }
+  
+  /* Buat toggle button di header BUKAN UNTUK collapse, TAPI untuk Offcanvas */
+  /* Kita akan gunakan Offcanvas di langkah berikutnya jika ini terlalu rumit */
+  /* Untuk saat ini, kita fokus pada desktop collapse */
+
+  /* Mari kita sederhanakan: Di mobile, sidebar SELALU tertutup */
+  .dashboard-layout .dashboard-sidebar-wrapper {
+    width: 80px;
+  }
+  /* Dan header memiliki tombol toggle */
+  .sidebar-toggle-btn {
+    display: block; /* Tampilkan tombol */
+  }
+}
+
+/* Perbaikan untuk Mobile (Simplifikasi) */
+@media (max-width: 767.98px) {
+  /* Di mobile, sidebar selalu tertutup (collapsed) */
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .dashboard-layout.sidebar-open .dashboard-sidebar-wrapper,
+  .dashboard-layout.sidebar-closed .dashboard-sidebar-wrapper {
+    width: 100%; /* Sidebar jadi horizontal di atas */
+    height: auto;
+    position: relative;
+    border-bottom: 1px solid #374151;
+  }
+  .dashboard-sidebar {
+    flex-direction: row; /* Nav jadi horizontal */
+    height: auto;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+  .sidebar-logo, .sidebar-menu-title, .sidebar-link-text {
+    display: none; /* Sembunyikan teks di mobile */
+  }
+  .sidebar-menu-group {
+    display: flex;
+    margin: 0;
+  }
+  .sidebar-toggle-btn {
+    display: none; /* Sembunyikan toggle di mobile */
+  }
+  .dashboard-header {
+    display: none; /* Sembunyikan header desktop di mobile */
+  }
+  .dashboard-content-wrapper {
+    width: 100%;
+  }
+}

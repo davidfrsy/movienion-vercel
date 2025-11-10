@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext.jsx";
 import "./Navbar.css";
 
@@ -67,41 +67,27 @@ const AppNavbar = () => {
               <>
                 {/* Cek role */}
                 {user.role === "admin" || user.role === "author" ? (
-                  <>
-                    {/* --- TAMPILAN ADMIN / AUTHOR --- */}
-                    <NavDropdown title="My Account" id="admin-nav-dropdown">
-                      <LinkContainer to="/dashboard">
-                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
-                      </LinkContainer>
-
-                      {/* Tampilan menu khusus admin */}
-                      {user.role === "admin" && (
-                        <LinkContainer to="/dashboard/users">
-                          <NavDropdown.Item>Manage Users</NavDropdown.Item>
-                        </LinkContainer>
-                      )}
-
-                      <LinkContainer to="/add-review" className="d-lg-none">
-                        <NavDropdown.Item>Add Review</NavDropdown.Item>
-                      </LinkContainer>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item onClick={logout}>
-                        Logout
+                  <NavDropdown
+                    title={`Hi, ${user.name}`}
+                    id="admin-nav-dropdown"
+                    align="end"
+                  >
+                    <LinkContainer to="/dashboard">
+                      <NavDropdown.Item>
+                        <FaTachometerAlt className="me-2" />Dashboard
                       </NavDropdown.Item>
-                    </NavDropdown>
-                  </>
+                    </LinkContainer>
+                  </NavDropdown>
                 ) : (
-                  <>
-                    {/* --- TAMPILAN 'user' BIASA --- */}
-                    <NavDropdown
-                      title={`Hi, ${user.name}`}
-                      id="user-nav-dropdown"
-                    >
-                      <NavDropdown.Item onClick={logout}>
-                        Logout
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </>
+                  <NavDropdown
+                    title={`Hi, ${user.name}`}
+                    id="user-nav-dropdown"
+                    align="end"
+                  >
+                    <NavDropdown.Item onClick={logout}>
+                      <FaSignOutAlt className="me-2" /> Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 )}
               </>
             ) : (

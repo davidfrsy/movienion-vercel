@@ -194,14 +194,9 @@ const DashboardPage = () => {
   }
 
   return (
-    <Container className="my-5">
+    <Container className="my-2">
       <div className="d-flex justify-content-between mb-4">
         <h1>My Reviews</h1>
-        <div>
-          <Link to="/add-review" className="btn btn-primary me-2">
-            Add New Review
-          </Link>
-        </div>
       </div>
 
       {isLoading && (
