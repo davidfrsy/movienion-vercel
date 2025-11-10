@@ -32,7 +32,7 @@ router.put("/:id/role", adminAuth, async (req, res) => {
       .from("users")
       .update({ role: role })
       .eq("id", id)
-      .select("id, name, email, role")
+      .select("id, name, email, role, created_at")
       .single();
 
     if (error) throw error;
